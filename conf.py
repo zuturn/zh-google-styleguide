@@ -20,10 +20,11 @@ import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if not on_rtd:  # only import and set the theme if we're building docs locally
-    import sphinx_rtd_theme
-    html_theme = 'sphinx_rtd_theme'
-    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-
+    import guzzle_sphinx_theme
+    html_translator_class = 'guzzle_sphinx_theme.HTMLTranslator'
+    html_theme_path = guzzle_sphinx_theme.html_theme_path()
+    html_theme = 'guzzle_sphinx_theme'
+    extensions.append("guzzle_sphinx_theme")
 # otherwise, readthedocs.org uses their theme by default, so no need to specify it
 
 html_title = u'Google 开源项目风格指南'
